@@ -1,0 +1,25 @@
+{
+  "name": "@mehrwearing/api-client",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Isomorphic typed client for the MehrWearingShopping API — works in browsers, React Native and Node.js (desktop apps).",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "generate": "openapi-typescript ../../docs/openapi.json -o src/generated/schema.ts",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "jest --config jest.config.cjs"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "jest": "^30.5.2",
+    "openapi-typescript": "^7.13.0",
+    "ts-jest": "^29.4.15",
+    "typescript": "5.9.3"
+  }
+}

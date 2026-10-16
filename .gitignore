@@ -1,0 +1,48 @@
+# dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# builds
+dist/
+build/
+.next/
+out/
+*.tsbuildinfo
+
+# generated Prisma client (regenerate with `bun run prisma:generate`)
+apps/api/src/generated/
+
+# local databases (embedded PostgreSQL data dirs)
+apps/api/.pgdata*/
+*.pid
+
+# environment secrets
+.env
+.env.*
+!.env.example
+apps/api/.env
+apps/web/.env
+apps/mobile/.env
+
+# logs
+*.log
+npm-debug.log*
+yarn-error.log*
+bun-debug.log*
+logs/
+
+# test / tooling coverage
+coverage/
+.eslintcache
+
+# editors / OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# mobile (Expo)
+.expo/
+expo-env.d.ts

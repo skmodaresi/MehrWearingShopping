@@ -1,0 +1,10 @@
+node_modules/
+dist/
+build/
+.next/
+coverage/
+bun.lock
+apps/api/src/generated/
+packages/api-client/src/generated/
+docs/openapi.json
+package-lock.json

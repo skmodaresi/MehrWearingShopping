@@ -1,0 +1,227 @@
+@import 'tailwindcss';
+
+/* ---------------------------------------------------------------------------
+   MehrWearing design tokens
+   - Vazirmatn for Persian, system stack for Latin
+   - logical properties everywhere so RTL (fa) and LTR (en) share one codebase
+--------------------------------------------------------------------------- */
+@theme {
+  --font-sans:
+    var(--font-vazirmatn), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif;
+  --color-ink: #0f172a;
+  --color-paper: #f8fafc;
+  --color-flame: #ea580c;
+  --color-flame-soft: #ffedd5;
+}
+
+:root {
+  --header-height: 4rem;
+}
+
+* {
+  border-color: theme(colors.slate.200);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-paper);
+  color: var(--color-ink);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-flame);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-flame);
+  outline-offset: 2px;
+}
+
+/* Latin runs inside RTL documents must not get reordered by bidi. */
+bdi,
+.ltr {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+/* --- Buttons -------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.75rem;
+  padding: 0.625rem 1.25rem;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  line-height: 1.25rem;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.05s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.btn-primary {
+  background: var(--color-ink);
+  color: #fff;
+}
+.btn-primary:hover:not(:disabled) {
+  background: #1e293b;
+}
+.btn-accent {
+  background: var(--color-flame);
+  color: #fff;
+}
+.btn-accent:hover:not(:disabled) {
+  background: #c2410c;
+}
+.btn-outline {
+  background: #fff;
+  color: var(--color-ink);
+  border: 1px solid theme(colors.slate.300);
+}
+.btn-outline:hover:not(:disabled) {
+  border-color: var(--color-ink);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--color-ink);
+}
+.btn-ghost:hover:not(:disabled) {
+  background: theme(colors.slate.100);
+}
+.btn-sm {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.8125rem;
+  border-radius: 0.625rem;
+}
+
+/* --- Forms ---------------------------------------------------------------- */
+.input {
+  width: 100%;
+  border-radius: 0.75rem;
+  border: 1px solid theme(colors.slate.300);
+  background: #fff;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.9375rem;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+.input:focus {
+  outline: none;
+  border-color: var(--color-flame);
+  box-shadow: 0 0 0 3px var(--color-flame-soft);
+}
+.label {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: theme(colors.slate.600);
+  margin-block-end: 0.375rem;
+}
+
+/* --- Surfaces ------------------------------------------------------------- */
+.card {
+  background: #fff;
+  border: 1px solid theme(colors.slate.200);
+  border-radius: 1rem;
+}
+.card-hover {
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+.card-hover:hover {
+  box-shadow: 0 12px 30px -12px rgb(15 23 42 / 0.25);
+  border-color: theme(colors.slate.300);
+  transform: translateY(-2px);
+}
+
+/* --- Badges --------------------------------------------------------------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  border-radius: 999px;
+  padding: 0.125rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.25rem;
+}
+.badge-discount {
+  background: #dc2626;
+  color: #fff;
+}
+.badge-accent {
+  background: var(--color-flame-soft);
+  color: var(--color-flame);
+}
+.badge-muted {
+  background: theme(colors.slate.100);
+  color: theme(colors.slate.600);
+}
+.badge-success {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+/* --- Product media (offline-safe SVG placeholders) ------------------------ */
+.product-media {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  background: theme(colors.slate.100);
+}
+.product-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.card-hover .product-media img {
+  transform: scale(1.04);
+}
+
+/* --- Misc ----------------------------------------------------------------- */
+.stars {
+  color: #f59e0b;
+  letter-spacing: 0.05em;
+}
+.price-old {
+  color: theme(colors.slate.400);
+  text-decoration: line-through;
+  font-size: 0.8125rem;
+}
+.skeleton {
+  background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton 1.4s ease infinite;
+}
+@keyframes skeleton {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
